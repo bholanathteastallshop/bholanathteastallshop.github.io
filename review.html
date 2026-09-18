@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Review Helper for Bholanath Tea Stall, Kim, Gujarat. Leave a quick Google review for fresh chai and snacks.">
+<title>Bholanath Tea Stall – Review Helper</title>
+<link rel="icon" type="image/png" sizes="128x128" href="img/bholanath-tea-stall-favicon.png">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<style>:root{--cream:#fdf6ec;--beige:#f5e6d0;--warm:#9b6b47;--deep:#5c3d2e;--text:#2c1a10;--muted:#6e5241;--white:#fff;--amber:#d97706;--amber-bg:#fef3c7;--green:#1b5e20;--green-bg:#e8f5e9;--ring:#2563eb;--sh-sm:0 2px 8px rgba(92,61,46,.08);--sh-md:0 4px 16px rgba(92,61,46,.12);--r:14px;--r-sm:8px;--pill:50px;--font:system-ui,"Noto Sans Gujarati","Noto Sans Devanagari",sans-serif}
+*,::before,::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--cream);color:var(--text);line-height:1.5;min-height:100vh;display:flex;flex-direction:column;align-items:center;-webkit-tap-highlight-color:transparent}
+.app-shell{width:100%;max-width:520px;min-height:100vh;display:flex;flex-direction:column;background:var(--cream);padding:.75rem 1rem 1.5rem}
+.header{display:flex;flex-direction:column;gap:.5rem;padding-bottom:.75rem;border-bottom:1px solid rgba(200,149,108,.25)}
+.brand-row{display:flex;align-items:center;justify-content:space-between}
+.brand-info{display:flex;align-items:center;gap:.5rem}
+.brand-emoji{font-size:1.7rem;line-height:1}
+.brand-title{font-size:1.22rem;font-weight:700;color:var(--deep);line-height:1.2}
+.brand-sub{font-size:.8rem;color:var(--muted);font-weight:500}
+.lang-switcher{display:inline-flex;background:rgba(200,149,108,.2);border-radius:var(--pill);padding:3px;gap:3px;align-self:flex-end}
+.lang-btn{background:transparent;border:none;padding:.4rem .65rem;font-size:.82rem;font-weight:600;font-family:inherit;color:var(--deep);border-radius:var(--pill);cursor:pointer;min-height:34px;min-width:44px;transition:all .2s ease}
+.lang-btn[aria-pressed="true"]{background:var(--warm);color:var(--white);box-shadow:0 2px 6px rgba(92,61,46,.25)}
+.lang-btn:focus-visible,.back-btn:focus-visible,.star-btn:focus-visible,.chip:focus-visible,.btn-primary:focus-visible,.regen-btn:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+.nav-bar{display:flex;align-items:center;justify-content:space-between;margin-top:.75rem;margin-bottom:.5rem;min-height:38px}
+.back-btn{background:none;border:1px solid rgba(155,107,71,.35);border-radius:var(--r-sm);color:var(--deep);font-size:.88rem;font-weight:600;font-family:inherit;padding:.35rem .75rem;cursor:pointer;display:inline-flex;align-items:center;gap:.3rem;min-height:40px}
+.back-btn:hover{background:var(--beige)}
+.back-btn[hidden]{visibility:hidden}
+.progress-text{font-size:.82rem;font-weight:700;color:var(--deep);text-transform:uppercase;letter-spacing:.05em}
+.progress-track{width:100%;height:6px;background:rgba(200,149,108,.25);border-radius:4px;overflow:hidden;margin-bottom:1.25rem}
+.progress-fill{height:100%;width:33.33%;background:var(--warm);border-radius:4px;transition:width .3s cubic-bezier(.4,0,.2,1)}
+.step-view{display:none;flex-direction:column;flex:1;width:100%}
+.step-view.active{display:flex;animation:fadeIn .25s ease-out}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.step1-container{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.5rem .5rem 2rem;flex:1}
+.step-badge{display:inline-block;background:rgba(200,149,108,.22);border:1px solid rgba(200,149,108,.45);color:var(--deep);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.3rem .9rem;border-radius:var(--pill);margin-bottom:1.1rem}
+.step-title{font-size:clamp(1.4rem,4.8vw,1.85rem);font-weight:800;color:var(--deep);margin-bottom:.5rem;line-height:1.25}
+.step-sub{font-size:.96rem;color:var(--muted);margin-bottom:2rem}
+.star-row{display:flex;justify-content:center;gap:.5rem;width:100%;margin-bottom:1.5rem}
+.star-btn{flex:1;max-width:68px;min-width:56px;min-height:56px;aspect-ratio:1;background:var(--white);border:2px solid rgba(200,149,108,.35);border-radius:var(--r);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--sh-sm);transition:transform .15s ease,border-color .2s ease;touch-action:manipulation}
+.star-btn:hover{transform:translateY(-2px);border-color:var(--amber);background-color:var(--amber-bg)}
+.star-btn:active{transform:scale(.92)}
+.star-btn svg{width:34px;height:34px;fill:#e5d5c5;stroke:var(--deep);stroke-width:1.2px;transition:fill .25s ease,transform .25s ease}
+.star-btn.active svg{fill:var(--amber);stroke:#92400e;animation:teaPour .35s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes teaPour{0%{transform:scale(.7) rotate(-15deg);fill:#fde68a}50%{transform:scale(1.25) rotate(5deg);fill:#f59e0b}100%{transform:scale(1) rotate(0);fill:var(--amber)}}
+@media (prefers-reduced-motion:reduce){.star-btn.active svg,.step-view.active{animation:none}}
+.rating-label-box{min-height:38px;display:flex;align-items:center;justify-content:center;margin-bottom:.75rem}
+.rating-label{font-size:1.25rem;font-weight:700;color:var(--deep);background:var(--white);padding:.35rem 1.25rem;border-radius:var(--pill);border:1px solid rgba(200,149,108,.4);box-shadow:var(--sh-sm)}
+.auto-advance-hint{font-size:.82rem;color:var(--muted);margin-top:.25rem}
+.step2-content{padding-bottom:90px}
+.chip-section{margin-bottom:1.6rem}
+.chip-heading{font-size:1.08rem;font-weight:700;color:var(--deep);margin-bottom:.65rem;display:flex;align-items:center;gap:.4rem}
+.chips-grid{display:flex;flex-wrap:wrap;gap:.6rem}
+.chip{display:inline-flex;align-items:center;gap:.45rem;min-height:48px;padding:.65rem 1.05rem;background:var(--white);border:1.5px solid rgba(155,107,71,.32);border-radius:var(--pill);color:var(--text);font-size:.95rem;font-weight:600;font-family:inherit;cursor:pointer;user-select:none;touch-action:manipulation;transition:all .18s ease;box-shadow:0 1px 4px rgba(92,61,46,.05)}
+.chip:hover{border-color:var(--warm);background:#faf3eb}
+.chip:active{transform:scale(.96)}
+.chip[aria-pressed="true"]{background-color:#f7ebe0;border:2px solid var(--warm);color:var(--deep);font-weight:700;box-shadow:0 2px 8px rgba(155,107,71,.18)}
+.chip-check{display:none;font-size:.95rem;color:var(--warm);font-weight:800}
+.chip[aria-pressed="true"] .chip-check{display:inline}
+.sticky-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:520px;background:rgba(253,246,236,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:.85rem 1rem calc(.85rem + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(200,149,108,.3);box-shadow:0 -4px 20px rgba(92,61,46,.08);z-index:100;display:flex;flex-direction:column;gap:.5rem}
+.btn-primary{width:100%;min-height:52px;background:var(--warm);color:var(--white);border:none;border-radius:var(--pill);font-family:inherit;font-size:1.08rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;cursor:pointer;box-shadow:0 4px 14px rgba(155,107,71,.35);transition:all .2s ease;touch-action:manipulation}
+.btn-primary:hover{background:var(--deep);transform:translateY(-1px);box-shadow:0 6px 20px rgba(92,61,46,.4)}
+.btn-primary:active{transform:scale(.98)}
+.step3-content{padding-bottom:120px}
+.review-box-card{background:var(--white);border-radius:var(--r);border:1.5px solid rgba(200,149,108,.35);padding:1.1rem;box-shadow:var(--sh-sm);margin-bottom:1rem}
+.review-stars-summary{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem;padding-bottom:.6rem;border-bottom:1px solid rgba(200,149,108,.18)}
+.stars-display{color:var(--amber);font-size:1.35rem;letter-spacing:2px}
+.regen-btn{background:transparent;border:1px solid rgba(155,107,71,.4);color:var(--warm);font-family:inherit;font-size:.88rem;font-weight:600;padding:.45rem .85rem;border-radius:var(--pill);cursor:pointer;display:inline-flex;align-items:center;gap:.35rem;min-height:44px;transition:all .2s ease}
+.regen-btn:hover{background:var(--beige);color:var(--deep)}
+.review-textarea{width:100%;min-height:130px;font-family:inherit;font-size:1.02rem;line-height:1.6;color:var(--text);background:#fffdfa;border:1.5px solid rgba(155,107,71,.3);border-radius:var(--r-sm);padding:.85rem .95rem;resize:vertical;transition:border-color .2s ease}
+.review-textarea:focus{outline:none;border-color:var(--warm);box-shadow:0 0 0 3px rgba(155,107,71,.18)}
+.guide-card{background:var(--green-bg);border-left:4px solid var(--green);border-radius:var(--r-sm);padding:.85rem 1rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:.6rem}
+.guide-icon{font-size:1.3rem;line-height:1;color:var(--green)}
+.guide-text{font-size:.92rem;color:var(--green);font-weight:600;line-height:1.45}
+.reset-row{text-align:center;margin-top:.6rem}
+.reset-btn{background:none;border:none;color:var(--muted);font-family:inherit;font-size:.88rem;font-weight:600;text-decoration:underline;cursor:pointer;padding:.4rem .8rem;min-height:44px}
+.reset-btn:hover{color:var(--deep)}
+.toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%) translateY(-20px);background:var(--deep);color:var(--white);padding:.75rem 1.4rem;border-radius:var(--pill);font-size:.95rem;font-weight:600;box-shadow:var(--sh-md);opacity:0;pointer-events:none;transition:all .25s ease;z-index:200;display:flex;align-items:center;gap:.5rem;max-width:90%;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.compliance-note{font-size:.78rem;color:var(--muted);text-align:center;margin-top:.75rem;line-height:1.4}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}</style>
+</head>
+<body>
+<svg style="display:none" aria-hidden="true">
+<symbol id="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></symbol>
+</svg>
+<div id="srStatus" class="sr-only" aria-live="polite"></div>
+<main class="app-shell" id="mainApp" role="main">
+<header class="header">
+<div class="brand-row">
+<div class="brand-info">
+<span class="brand-emoji" aria-hidden="true">🍵</span>
+<div>
+<h1 class="brand-title" id="shopTitle">Bholanath Tea Stall</h1>
+<p class="brand-sub" id="shopLocation">Kim, Gujarat</p>
+</div>
+</div>
+<nav class="lang-switcher" aria-label="Choose Language">
+<button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+<button type="button" class="lang-btn" data-lang="hi" aria-pressed="false">हिन्दी</button>
+<button type="button" class="lang-btn" data-lang="gu" aria-pressed="false">ગુજરાતી</button>
+</nav>
+</div>
+</header>
+<div class="nav-bar">
+<button type="button" class="back-btn" id="backBtn" hidden aria-label="Go to previous step">
+<span aria-hidden="true">←</span> <span id="backText">Back</span>
+</button>
+<div class="progress-text" id="progressText" aria-live="polite">Step 1 of 3</div>
+</div>
+<div class="progress-track" aria-hidden="true">
+<div class="progress-fill" id="progressFill"></div>
+</div>
+<section class="step-view active" id="step1View" aria-labelledby="step1Heading">
+<div class="step1-container">
+<span class="step-badge" id="rateBadge">Share Your Experience</span>
+<h2 class="step-title" id="step1Heading">How was your chai today?</h2>
+<p class="step-sub" id="step1Sub">Tap stars to rate</p>
+<div class="star-row" role="radiogroup" aria-label="Rating from 1 to 5 stars" id="starRow"></div>
+<div class="rating-label-box">
+<span class="rating-label" id="ratingLabel" style="display:none"></span>
+</div>
+<p class="auto-advance-hint" id="autoAdvanceHint">Tap a star to continue</p>
+</div>
+</section>
+<section class="step-view" id="step2View" aria-labelledby="step2Heading">
+<div class="step2-content">
+<h2 class="step-title" id="step2Heading" style="font-size:1.45rem;margin-bottom:0.35rem">Pick a few details</h2>
+<p class="step-sub" id="step2Sub" style="margin-bottom:1.25rem">Tap whatever applies to your visit</p>
+<div class="chip-section">
+<h3 class="chip-heading" id="groupItemsHeading">☕ What did you have?</h3>
+<div class="chips-grid" id="itemsChipsContainer"></div>
+</div>
+<div class="chip-section">
+<h3 class="chip-heading" id="groupFeedbackHeading">👍 What did you like?</h3>
+<div class="chips-grid" id="feedbackChipsContainer"></div>
+</div>
+</div>
+<div class="sticky-bar">
+<button type="button" class="btn-primary" id="writeReviewBtn">
+<span id="writeReviewText">Write my review</span> <span aria-hidden="true">→</span>
+</button>
+</div>
+</section>
+<section class="step-view" id="step3View" aria-labelledby="step3Heading">
+<div class="step3-content">
+<h2 class="step-title" id="step3Heading" style="font-size:1.45rem;margin-bottom:0.35rem">Your review is ready</h2>
+<p class="step-sub" id="step3Sub" style="margin-bottom:1rem">Edit anything you like before posting</p>
+<div class="review-box-card">
+<div class="review-stars-summary">
+<span class="stars-display" id="reviewStarsDisplay" aria-label="Rating">★★★★★</span>
+<button type="button" class="regen-btn" id="regenBtn">
+<span aria-hidden="true">🔄</span> <span id="regenText">Write another version</span>
+</button>
+</div>
+<label for="reviewDraftText" class="sr-only">Review text</label>
+<textarea class="review-textarea" id="reviewDraftText" rows="5"></textarea>
+</div>
+<div class="guide-card">
+<span class="guide-icon" aria-hidden="true">💡</span>
+<div class="guide-text" id="guideText">On Google, tap 5 stars, paste, then tap Post</div>
+</div>
+<div class="reset-row">
+<button type="button" class="reset-btn" id="startOverBtn">↻ Start over</button>
+</div>
+<p class="compliance-note" id="complianceNote">Please only share what you actually experienced.</p>
+</div>
+<div class="sticky-bar">
+<button type="button" class="btn-primary" id="copyAndPostBtn">
+<span id="copyPostText">📋 Copy and open Google reviews</span>
+</button>
+</div>
+</section>
+</main>
+<a id="nativeGoogleLink" href="https://g.page/r/CcFGtEPNE1auEBM/review" target="_blank" rel="noopener" style="display:none" aria-hidden="true">Google Review</a>
+<div class="toast" id="toastBox" role="status" aria-live="polite">
+<span aria-hidden="true">✓</span> <span id="toastMsg">Review copied! Opening Google...</span>
+</div>
+<script>const GOOGLE_REVIEW_URL = "https://g.page/r/CcFGtEPNE1auEBM/review";
+const $ = id => document.getElementById(id);
+const STR = {
+shopTitle: ["Bholanath Tea Stall", "भोलानाथ टी स्टॉल", "ભોલાનાથ ટી સ્ટોલ"],
+shopLocation: ["Kim, Gujarat", "किम, गुजरात", "કીમ, ગુજરાત"],
+stepProg: ["Step {n} of 3", "चरण {n} / 3", "પગલું {n} / 3"],
+back: ["Back", "वापस", "પાછા"],
+rateBadge: ["Share Your Experience", "अपना अनुभव बताएं", "તમારો અનુભવ જણાવો"],
+step1Head: ["How was your chai today?", "आज आपकी चाय कैसी थी?", "આજે તમારી ચા કેવી લાગી?"],
+step1Sub: ["Tap stars to rate", "रेटिंग देने के लिए स्टार चुनें", "રેટિંગ આપવા માટે સ્ટાર પસંદ કરો"],
+autoHint: ["Tap a star to continue", "आगे बढ़ने के लिए स्टार दबाएं", "આગળ વધવા માટે સ્ટાર પસંદ કરો"],
+step2Head: ["Pick a few details", "कुछ बातें चुनें", "થોડી વિગતો પસંદ કરો"],
+step2Sub: ["Tap whatever applies to your visit", "जो भी आपने लिया या महसूस किया, उसे चुनें", "તમે જે લીધું હોય તે પસંદ કરો"],
+grpItems: ["☕ What did you have?", "☕ आपने क्या लिया?", "☕ તમે શું લીધું?"],
+grpPos: ["👍 What did you like?", "👍 आपको क्या पसंद आया?", "👍 તમને શું ગમ્યું?"],
+grpCon: ["🔧 What could be better?", "🔧 क्या बेहतर हो सकता है?", "🔧 શું સુધારી શકાય?"],
+btnStep2: ["Write my review", "मेरा रिव्यू लिखें", "મારો રિવ્યૂ લખો"],
+step3Head: ["Your review is ready", "आपका रिव्यू तैयार है", "તમારો રિવ્યૂ તૈયાર છે"],
+step3Sub: ["Edit anything you like before posting", "पोस्ट करने से पहले आप बदलाव कर सकते हैं", "પોસ્ટ કરતાં પહેલાં તમે ફેરફાર કરી શકો છો"],
+regen: ["Write another version", "दूसरा तरीका लिखें", "બીજી રીતે લખો"],
+copyPost: ["Copy and open Google reviews", "कॉपी करें और गूगल रिव्यू खोलें", "કોપી કરો અને ગૂગલ રિવ્યૂ ખોલો"],
+guide: ["On Google, tap {stars} stars, paste, then tap Post", "गूगल पर {stars} स्टार दबाएं, पेस्ट करें और पोस्ट करें", "ગૂગલ પર {stars} સ્ટાર દબાવો, પેસ્ટ કરો અને પોસ્ટ કરો"],
+startOver: ["↻ Start over", "↻ फिर से शुरू करें", "↻ ફરીથી શરૂ કરો"],
+toastCopied: ["Review copied! Opening Google...", "रिव्यू कॉपी हो गया! गूगल खुल रहा है...", "રિવ્યૂ કોપી થઈ ગયો! ગૂગલ ખુલી રહ્યું છે..."],
+toastFail: ["Press and hold the text, tap Copy", "टेक्स्ट को दबाकर रखें और Copy चुनें", "લખાણ પર થોડીવાર દબાવી રાખી Copy કરો"],
+compNote: ["Please only share what you actually experienced.", "कृपया वही लिखें जो आपका वास्तविक अनुभव रहा हो।", "કૃપા કરીને તમારો સાચો અનુભવ જ જણાવો."]
+};
+const STAR_LABELS = [
+["Poor", "Fair", "Good", "Very good", "Excellent"],
+["खराब", "ठीक-ठाक", "अच्छी", "बहुत अच्छी", "लाजवाब"],
+["ખરાબ", "સામાન્ય", "સારી", "ખૂબ સારી", "જોરદાર"]
+];
+const ITEM_KEYS = ["cutting_chai", "full_cup_tea", "bread_pakoda", "samosa", "medu_vada", "vada", "onion_bhajiya", "wafers_biscuits", "namkeen"];
+const ITEM_LABELS = [
+["Cutting chai", "Full cup tea", "Bread pakoda", "Samosa", "Medu vada", "Vada", "Onion bhajiya", "Wafers & biscuits", "Namkeen"],
+["कटिंग चाय", "फुल कप चाय", "ब्रेड पकोड़ा", "समोसा", "मेदु वड़ा", "वड़ा", "कांदा भजिया", "वेफर्स और बिस्कुट", "नमकीन"],
+["કટિંગ ચા", "ફુલ કપ ચા", "બ્રેડ પકોડા", "સમોસા", "મેદુ વડા", "વડા", "કાંદા ભજીયા", "વેફર્સ અને બિસ્કિટ", "નમકીન"]
+];
+const FB_POS_KEYS = ["fresh_hot", "great_taste", "affordable", "quick_service", "clean", "friendly_staff", "open_early", "crispy_snacks"];
+const FB_POS_LABELS = [
+["Fresh & hot", "Great taste", "Affordable", "Quick service", "Clean", "Friendly staff", "Open early", "Crispy snacks"],
+["गरम और ताज़ा", "बढ़िया स्वाद", "सही दाम", "तेज़ सर्विस", "साफ़-सुथरा", "अच्छा व्यवहार", "सुबह जल्दी खुलता है", "कुरकुरे नाश्ते"],
+["ગરમ અને તાજું", "જોરદાર સ્વાદ", "વાજબી ભાવ", "ઝડપી સર્વિસ", "ચોખ્ખાઈ", "સારો સ્વભાવ", "સવારે વહેલું ખુલે છે", "કુરકુરા નાસ્તા"]
+];
+const FB_CON_KEYS = ["long_wait", "tea_hotter", "crowded", "limited_seating", "cleanliness", "snacks_not_fresh"];
+const FB_CON_LABELS = [
+["Long wait", "Tea could be hotter", "Crowded", "Limited seating", "Cleanliness", "Snacks not fresh"],
+["इंतज़ार ज़्यादा", "चाय और गरम होनी चाहिए", "बहुत भीड़", "बैठने की जगह कम", "सफ़ाई में सुधार", "नाश्ता ताज़ा नहीं था"],
+["લાંબો સમય રાહ જોવી પડી", "ચા વધારે ગરમ હોવી જોઈએ", "વધુ પડતી ભીડ", "બેસવાની જગ્યા ઓછી", "સફાઈમાં સુધારો", "નાસ્તો તાજો નહોતો"]
+];
+const TEMPLATES = [
+{
+conj: "and",
+pos: {
+openers: [
+"Visited Bholanath Tea Stall near Kim station today.",
+"Always love stopping by Bholanath Tea Stall in Kim.",
+"Had a great tea break at Bholanath Tea Stall on Gali Station Road."
+],
+itemsFeed: "The {i} was really delicious. Loved the {f}.",
+itemsOnly: "Enjoyed the {i}, prepared fresh and served piping hot.",
+feedOnly: "The chai and snacks were great, especially the {f}.",
+generic: "The cutting chai was freshly brewed and gave a great burst of energy.",
+closers: [
+"Definitely one of the best tea spots in Kim!",
+"Will gladly visit again whenever I am in Kim.",
+"A must-visit stall for genuine cutting chai lovers."
+]
+},
+neu: {
+openers: ["Stopped by Bholanath Tea Stall in Kim today."],
+itemsFeed: "Had {i}. Taste was okay, but noticed {f}.",
+itemsOnly: "Ordered {i}. Average experience overall.",
+feedOnly: "Tea was decent, though there was {f}.",
+generic: "Decent tea stall for a quick break, though service can be slightly improved.",
+closers: ["Hope to see a little improvement on my next visit."]
+},
+neg: {
+openers: ["Visited Bholanath Tea Stall in Kim today."],
+itemsFeed: "Ordered {i}, but was disappointed with {f}.",
+itemsOnly: "The {i} did not meet expectations today.",
+feedOnly: "Did not have a good experience due to {f}.",
+generic: "The experience fell below expectations today.",
+closers: ["Sharing this honest feedback so the team can work on improving."]
+}
+},
+{
+conj: "और",
+pos: {
+openers: [
+"आज किम में भोलानाथ टी स्टॉल पर रुका था।",
+"किम स्टेशन रोड पर भोलानाथ टी स्टॉल की चाय हमेशा पसंद आती है।",
+"भोलानाथ टी स्टॉल पर बढ़िया चाय और नाश्ते का मज़ा लिया।"
+],
+itemsFeed: "यहाँ {i} लिया, स्वाद बहुत बढ़िया था। {f} देखकर मज़ा आ गया।",
+itemsOnly: "यहाँ {i} का मज़ा लिया, एकदम ताज़ा और गरम मिला।",
+feedOnly: "चाय बहुत अच्छी थी और {f} सबसे खास लगा।",
+generic: "ताज़ा कड़क चाय पीकर दिल खुश हो गया।",
+closers: [
+"किम में चाय के लिए बेहतरीन जगह है!",
+"यहाँ दोबारा ज़रूर आऊंगा।",
+"ताज़ा चाय और नाश्ते के लिए ज़रूर जाएं!"
+]
+},
+neu: {
+openers: ["आज किम में भोलानाथ टी स्टॉल पर चाय पीने रुका था।"],
+itemsFeed: "यहाँ {i} लिया। स्वाद सामान्य था, लेकिन {f} में थोड़ा सुधार चाहिए।",
+itemsOnly: "यहाँ {i} लिया, अनुभव सामान्य रहा।",
+feedOnly: "चाय ठीक थी, लेकिन {f} लगा।",
+generic: "अनुभव ठीक-ठाक रहा, लेकिन कुछ चीज़ों में सुधार की गुंजाइश है।",
+closers: ["उम्मीद है अगली बार अनुभव और बेहतर होगा।"]
+},
+neg: {
+openers: ["आज किम में भोलानाथ टी स्टॉल पर गया था।"],
+itemsFeed: "यहाँ {i} लिया, लेकिन {f} की वजह से अनुभव अच्छा नहीं रहा।",
+itemsOnly: "यहाँ {i} से निराशा हुई।",
+feedOnly: "यहाँ {f} की समस्या लगी, जिससे निराशा हुई।",
+generic: "आज का अनुभव उम्मीद के मुताबिक नहीं रहा।",
+closers: ["आशा है कि प्रबंधन इस पर ध्यान देकर सुधार करेगा।"]
+}
+},
+{
+conj: "અને",
+pos: {
+openers: [
+"આજે કીમમાં ભોલાનાથ ટી સ્ટોલ પર ચા પીવા ગયો હતો.",
+"કીમ સ્ટેશન રોડ પાસે ભોલાનાથ ટી સ્ટોલની ચા હંમેશા સરસ હોય છે.",
+"ભોલાનાથ ટી સ્ટોલ પર ગરમાગરમ ચા અને નાસ્તાની મજા માણી."
+],
+itemsFeed: "મેં {i} લીધું, એકદમ સ્વાદિષ્ટ હતું. ખાસ કરીને {f} ગમ્યું.",
+itemsOnly: "અહીં {i} ખાધું, તાજું અને ગરમાગરમ પીરસવામાં આવ્યું હતું.",
+feedOnly: "ચા એકદમ જોરદાર હતી અને {f} ઘણું સારું લાગ્યું.",
+generic: "તાજી કટિંગ ચા પીને મજા આવી ગઈ.",
+closers: [
+"કીમમાં ચા અને નાસ્તા માટે બેસ્ટ જગ્યા!",
+"જ્યારે પણ કીમ આવીશ ત્યારે ફરી જરૂર મુલાકાત લઈશ.",
+"તાજી અને કડક ચા માટે અચૂક જવા જેવી જગ્યા."
+]
+},
+neu: {
+openers: ["આજે કીમમાં ભોલાનાથ ટી સ્ટોલ પર ગયો હતો."],
+itemsFeed: "અહીં {i} લીધું. ચા સામાન્ય હતી પણ {f} બાબતે સુધારો જરૂરી છે.",
+itemsOnly: "અહીં {i} લીધું, સરેરાશ અનુભવ રહ્યો.",
+feedOnly: "ચા સારી હતી પરંતુ {f} જેવું લાગ્યું.",
+generic: "અનુભવ સામાન્ય રહ્યો, સેવા થોડી વધુ સારી થઈ શકે છે.",
+closers: ["આશા છે કે આગામી મુલાકાતમાં સુધારો જોવા મળશે."]
+},
+neg: {
+openers: ["આજે કીમમાં ભોલાનાથ ટી સ્ટોલ પર ગયો હતો."],
+itemsFeed: "અહીં {i} લીધું પરંતુ {f} ના કારણે અનુભવ સારો ન રહ્યો.",
+itemsOnly: "અહીં {i} થી નિરાશા થઈ.",
+feedOnly: "અહીં {f} ની સમસ્યા જોવા મળી.",
+generic: "આજનો અનુભવ અપેક્ષા મુજબ ન રહ્યો.",
+closers: ["આ સાચો રિવ્યૂ એટલા માટે આપું છું જેથી સુધારો થઈ શકે."]
+}
+}
+];
+const state = {
+lang: "en",
+langIdx: 0,
+step: 1,
+rating: 5,
+selectedItems: new Set(),
+selectedFeedback: new Set(),
+generatedText: "",
+hasUserEdited: false,
+variationIndex: 0
+};
+try {
+const s = localStorage.getItem("bholanath_review_lang");
+if (s === "hi") { state.lang = "hi"; state.langIdx = 1; }
+else if (s === "gu") { state.lang = "gu"; state.langIdx = 2; }
+} catch (e) {}
+const shopTitleEl = $("shopTitle");
+const shopLocationEl = $("shopLocation");
+const backBtn = $("backBtn");
+const backText = $("backText");
+const progressText = $("progressText");
+const progressFill = $("progressFill");
+const step1View = $("step1View");
+const step2View = $("step2View");
+const step3View = $("step3View");
+const rateBadge = $("rateBadge");
+const step1Heading = $("step1Heading");
+const step1Sub = $("step1Sub");
+const starRow = $("starRow");
+const ratingLabel = $("ratingLabel");
+const autoAdvanceHint = $("autoAdvanceHint");
+const step2Heading = $("step2Heading");
+const step2Sub = $("step2Sub");
+const groupItemsHeading = $("groupItemsHeading");
+const groupFeedbackHeading = $("groupFeedbackHeading");
+const itemsChipsContainer = $("itemsChipsContainer");
+const feedbackChipsContainer = $("feedbackChipsContainer");
+const writeReviewBtn = $("writeReviewBtn");
+const writeReviewText = $("writeReviewText");
+const step3Heading = $("step3Heading");
+const step3Sub = $("step3Sub");
+const reviewStarsDisplay = $("reviewStarsDisplay");
+const regenBtn = $("regenBtn");
+const regenText = $("regenText");
+const reviewDraftText = $("reviewDraftText");
+const guideText = $("guideText");
+const startOverBtn = $("startOverBtn");
+const complianceNote = $("complianceNote");
+const copyAndPostBtn = $("copyAndPostBtn");
+const copyPostText = $("copyPostText");
+const nativeGoogleLink = $("nativeGoogleLink");
+const toastBox = $("toastBox");
+const toastMsg = $("toastMsg");
+const srStatus = $("srStatus");
+nativeGoogleLink.href = GOOGLE_REVIEW_URL;
+starRow.innerHTML = [1,2,3,4,5].map(s => `<button type="button" class="star-btn" role="radio" aria-checked="false" data-stars="${s}" aria-label="${s} Star"><svg aria-hidden="true"><use href="#star-icon"/></svg></button>`).join("");
+const starButtons = starRow.querySelectorAll(".star-btn");
+function announce(m) { if (srStatus) srStatus.textContent = m; }
+function showToast(m, d = 3200) {
+toastMsg.textContent = m;
+toastBox.classList.add("show");
+setTimeout(() => { toastBox.classList.remove("show"); }, d);
+}
+function naturalJoin(arr, conj) {
+if (!arr || !arr.length) return "";
+if (arr.length === 1) return arr[0];
+if (arr.length === 2) return `${arr[0]} ${conj} ${arr[1]}`;
+return `${arr.slice(0, -1).join(", ")} ${conj} ${arr[arr.length - 1]}`;
+}
+function generateReviewDraft(rating, idx, itemsSet, fbSet, seed = 0) {
+const t = TEMPLATES[idx];
+const itemsList = Array.from(itemsSet).map(k => {
+const i = ITEM_KEYS.indexOf(k);
+return i !== -1 ? ITEM_LABELS[idx][i] : k;
+});
+const isPos = rating >= 4;
+const isNeu = rating === 3;
+const keys = isPos ? FB_POS_KEYS : FB_CON_KEYS;
+const labels = isPos ? FB_POS_LABELS[idx] : FB_CON_LABELS[idx];
+const fbList = Array.from(fbSet).map(k => {
+const i = keys.indexOf(k);
+return i !== -1 ? labels[i] : k;
+});
+const pool = isPos ? t.pos : (isNeu ? t.neu : t.neg);
+const opener = pool.openers[seed % pool.openers.length];
+const closer = pool.closers[(seed + 1) % pool.closers.length];
+let mid = "";
+if (itemsList.length && fbList.length) {
+mid = pool.itemsFeed.replace("{i}", naturalJoin(itemsList, t.conj)).replace("{f}", naturalJoin(fbList, t.conj));
+} else if (itemsList.length) {
+mid = pool.itemsOnly.replace("{i}", naturalJoin(itemsList, t.conj));
+} else if (fbList.length) {
+mid = pool.feedOnly.replace("{f}", naturalJoin(fbList, t.conj));
+} else {
+mid = pool.generic;
+}
+return `${opener} ${mid} ${closer}`;
+}
+function applyLocalization() {
+const i = state.langIdx;
+document.documentElement.lang = state.lang;
+shopTitleEl.textContent = STR.shopTitle[i];
+shopLocationEl.textContent = STR.shopLocation[i];
+backText.textContent = STR.back[i];
+rateBadge.textContent = STR.rateBadge[i];
+step1Heading.textContent = STR.step1Head[i];
+step1Sub.textContent = STR.step1Sub[i];
+autoAdvanceHint.textContent = STR.autoHint[i];
+step2Heading.textContent = STR.step2Head[i];
+step2Sub.textContent = STR.step2Sub[i];
+groupItemsHeading.textContent = STR.grpItems[i];
+writeReviewText.textContent = STR.btnStep2[i];
+step3Heading.textContent = STR.step3Head[i];
+step3Sub.textContent = STR.step3Sub[i];
+regenText.textContent = STR.regen[i];
+copyPostText.textContent = STR.copyPost[i];
+startOverBtn.textContent = STR.startOver[i];
+complianceNote.textContent = STR.compNote[i];
+starButtons.forEach(btn => {
+const s = parseInt(btn.dataset.stars, 10);
+btn.setAttribute("aria-label", `${s} Stars, ${STAR_LABELS[i][s - 1]}`);
+});
+if (state.rating) updateStarVisuals(state.rating);
+updateProgressUI();
+renderChips();
+if (state.step === 3 && !state.hasUserEdited) {
+state.generatedText = generateReviewDraft(state.rating, state.langIdx, state.selectedItems, state.selectedFeedback, state.variationIndex);
+reviewDraftText.value = state.generatedText;
+}
+updateGuideText();
+}
+function updateProgressUI() {
+const i = state.langIdx;
+progressText.textContent = STR.stepProg[i].replace("{n}", state.step);
+progressFill.style.width = (state.step * 33.33) + "%";
+backBtn.hidden = (state.step === 1);
+}
+function updateGuideText() {
+const i = state.langIdx;
+guideText.textContent = STR.guide[i].replace("{stars}", state.rating);
+reviewStarsDisplay.textContent = "★".repeat(state.rating) + "☆".repeat(5 - state.rating);
+reviewStarsDisplay.setAttribute("aria-label", `${state.rating} Stars`);
+}
+function setLanguage(lang) {
+if (lang === "hi") { state.lang = "hi"; state.langIdx = 1; }
+else if (lang === "gu") { state.lang = "gu"; state.langIdx = 2; }
+else { state.lang = "en"; state.langIdx = 0; }
+try { localStorage.setItem("bholanath_review_lang", state.lang); } catch (e) {}
+document.querySelectorAll(".lang-btn").forEach(btn => {
+btn.setAttribute("aria-pressed", btn.dataset.lang === state.lang ? "true" : "false");
+});
+applyLocalization();
+announce(`Language changed to ${state.lang === 'gu' ? 'Gujarati' : (state.lang === 'hi' ? 'Hindi' : 'English')}`);
+}
+function updateStarVisuals(sel) {
+const i = state.langIdx;
+starButtons.forEach(btn => {
+const s = parseInt(btn.dataset.stars, 10);
+const act = s <= sel;
+btn.classList.toggle("active", act);
+btn.setAttribute("aria-checked", act ? "true" : "false");
+});
+ratingLabel.style.display = "inline-block";
+ratingLabel.textContent = `${"★".repeat(sel)} ${STAR_LABELS[i][sel - 1]}`;
+}
+function selectRating(r, autoAdvance = true) {
+state.rating = r;
+updateStarVisuals(r);
+announce(`Selected ${r} stars, ${STAR_LABELS[state.langIdx][r - 1]}`);
+const wasPos = state.rating >= 4;
+const isPos = r >= 4;
+if (wasPos !== isPos) state.selectedFeedback.clear();
+if (autoAdvance) setTimeout(() => { goToStep(2); }, 320);
+}
+function renderChips() {
+const i = state.langIdx;
+itemsChipsContainer.innerHTML = "";
+ITEM_KEYS.forEach((key, idx) => {
+const btn = document.createElement("button");
+btn.type = "button";
+btn.className = "chip";
+btn.dataset.key = key;
+const sel = state.selectedItems.has(key);
+btn.setAttribute("role", "button");
+btn.setAttribute("aria-pressed", sel ? "true" : "false");
+btn.innerHTML = `<span class="chip-check" aria-hidden="true">✓</span> <span>${ITEM_LABELS[i][idx]}</span>`;
+btn.onclick = () => toggleItemChip(key, btn);
+itemsChipsContainer.appendChild(btn);
+});
+feedbackChipsContainer.innerHTML = "";
+const isPos = state.rating >= 4;
+groupFeedbackHeading.textContent = isPos ? STR.grpPos[i] : STR.grpCon[i];
+const keys = isPos ? FB_POS_KEYS : FB_CON_KEYS;
+const labels = isPos ? FB_POS_LABELS[i] : FB_CON_LABELS[i];
+keys.forEach((key, idx) => {
+const btn = document.createElement("button");
+btn.type = "button";
+btn.className = "chip";
+btn.dataset.key = key;
+const sel = state.selectedFeedback.has(key);
+btn.setAttribute("role", "button");
+btn.setAttribute("aria-pressed", sel ? "true" : "false");
+btn.innerHTML = `<span class="chip-check" aria-hidden="true">✓</span> <span>${labels[idx]}</span>`;
+btn.onclick = () => toggleFeedbackChip(key, btn);
+feedbackChipsContainer.appendChild(btn);
+});
+}
+function toggleItemChip(key, btn) {
+if (state.selectedItems.has(key)) {
+state.selectedItems.delete(key);
+btn.setAttribute("aria-pressed", "false");
+} else {
+state.selectedItems.add(key);
+btn.setAttribute("aria-pressed", "true");
+}
+}
+function toggleFeedbackChip(key, btn) {
+if (state.selectedFeedback.has(key)) {
+state.selectedFeedback.delete(key);
+btn.setAttribute("aria-pressed", "false");
+} else {
+state.selectedFeedback.add(key);
+btn.setAttribute("aria-pressed", "true");
+}
+}
+function goToStep(target) {
+state.step = target;
+step1View.classList.toggle("active", target === 1);
+step2View.classList.toggle("active", target === 2);
+step3View.classList.toggle("active", target === 3);
+if (target === 2) renderChips();
+if (target === 3) {
+if (!state.hasUserEdited) {
+state.generatedText = generateReviewDraft(state.rating, state.langIdx, state.selectedItems, state.selectedFeedback, state.variationIndex);
+reviewDraftText.value = state.generatedText;
+}
+updateGuideText();
+}
+updateProgressUI();
+window.scrollTo({ top: 0, behavior: "smooth" });
+}
+async function handleCopyAndPost() {
+const text = reviewDraftText.value.trim();
+let ok = false;
+try {
+reviewDraftText.focus();
+reviewDraftText.select();
+reviewDraftText.setSelectionRange(0, 99999);
+ok = document.execCommand("copy");
+} catch (err) { ok = false; }
+if (navigator.clipboard && navigator.clipboard.writeText) {
+try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {}
+}
+const i = state.langIdx;
+if (ok) {
+showToast(STR.toastCopied[i]);
+announce(STR.toastCopied[i]);
+} else {
+showToast(STR.toastFail[i], 4000);
+announce(STR.toastFail[i]);
+}
+setTimeout(() => { nativeGoogleLink.click(); }, 350);
+}
+document.querySelectorAll(".lang-btn").forEach(btn => {
+btn.onclick = () => setLanguage(btn.dataset.lang);
+});
+backBtn.onclick = () => {
+if (state.step === 2) goToStep(1);
+else if (state.step === 3) goToStep(2);
+};
+writeReviewBtn.onclick = () => {
+state.variationIndex = 0;
+state.hasUserEdited = false;
+goToStep(3);
+};
+reviewDraftText.oninput = () => { state.hasUserEdited = true; };
+regenBtn.onclick = () => {
+state.variationIndex += 1;
+state.hasUserEdited = false;
+state.generatedText = generateReviewDraft(state.rating, state.langIdx, state.selectedItems, state.selectedFeedback, state.variationIndex);
+reviewDraftText.value = state.generatedText;
+announce("New review draft generated");
+};
+copyAndPostBtn.onclick = handleCopyAndPost;
+startOverBtn.onclick = () => {
+state.selectedItems.clear();
+state.selectedFeedback.clear();
+state.hasUserEdited = false;
+state.variationIndex = 0;
+goToStep(1);
+};
+starButtons.forEach(btn => {
+btn.onclick = () => selectRating(parseInt(btn.dataset.stars, 10), true);
+});
+applyLocalization();</script>
+</body>
+</html>

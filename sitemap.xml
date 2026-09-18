@@ -1,9 +1,54 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://bholanathteastallshop.github.io/</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://bholanathteastallshop.github.io/img/bholanath-cutting-chai-kim.webp</image:loc>
+      <image:title>Cutting chai at Bholanath Tea Stall, Kim</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bholanathteastallshop.github.io/img/bholanath-special-chai-kim.webp</image:loc>
+      <image:title>Freshly brewed full cup tea at Bholanath Tea Stall, Kim</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bholanathteastallshop.github.io/img/special-bread-pakoda-kim.webp</image:loc>
+      <image:title>Freshly made crispy bread pakoda at Bholanath Tea Stall, Kim</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bholanathteastallshop.github.io/img/crispy-samosa-kim.webp</image:loc>
+      <image:title>Golden crispy potato samosa at Bholanath Tea Stall, Kim</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bholanathteastallshop.github.io/img/crispy-onion-bhajiya-kim.webp</image:loc>
+      <image:title>Golden crispy onion bhajiya evening snack at Bholanath Tea Stall, Kim</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bholanathteastallshop.github.io/img/south-indian-medu-vada-kim.webp</image:loc>
+      <image:title>Crispy South-Indian style medu vada at Bholanath Tea Stall, Kim</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bholanathteastallshop.github.io/img/hot-batata-vada-kim.webp</image:loc>
+      <image:title>Hot spiced batata vada breakfast snack at Bholanath Tea Stall, Kim</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bholanathteastallshop.github.io/img/balaji-wafers-snacks-kim.webp</image:loc>
+      <image:title>Balaji wafers and chips packet at Bholanath Tea Stall, Kim</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bholanathteastallshop.github.io/img/real-namkeen-wafers-kim.webp</image:loc>
+      <image:title>Real wafers and chips snacks at Bholanath Tea Stall, Kim</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bholanathteastallshop.github.io/img/chai-biscuits-parle-kim.webp</image:loc>
+      <image:title>Crispy biscuits to enjoy with hot chai at Bholanath Tea Stall, Kim</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bholanathteastallshop.github.io/img/fresh-namkeen-snacks-kim.webp</image:loc>
+      <image:title>Spicy and savoury fresh namkeen snack jar at Bholanath Tea Stall, Kim</image:title>
+    </image:image>
   </url>
 </urlset>

@@ -58,7 +58,7 @@ window.addEventListener('scroll', highlightNav);
    Fade-up animations
    ===================== */
 const animTargets = document.querySelectorAll(
-  '.section-label, .section-title, .highlight-card, .menu-category, .review-card, .info-card, .contact-card, .about-text, .about-highlights, .map-wrapper, .rating-summary, .price-card, .shift-header, .shift-intro'
+  '.section-label, .section-title, .highlight-card, .menu-category, .review-card, .info-card, .contact-card, .about-text, .about-highlights, .map-wrapper, .rating-summary, .price-card, .shift-header, .shift-intro, .faq-item'
 );
 
 animTargets.forEach(el => el.classList.add('fade-up'));
