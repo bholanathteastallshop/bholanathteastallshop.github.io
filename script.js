@@ -3,13 +3,15 @@
    ===================== */
 const navbar = document.getElementById('navbar');
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 30) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 30) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+}
 
 /* =====================
    Mobile nav toggle
@@ -17,19 +19,21 @@ window.addEventListener('scroll', () => {
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-  const isOpen = navLinks.classList.contains('open');
-  navToggle.setAttribute('aria-expanded', isOpen);
-});
-
-// Close nav when a link is clicked
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    const isOpen = navLinks.classList.contains('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
   });
-});
+
+  // Close nav when a link is clicked
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
 
 /* =====================
    Active nav link
@@ -37,28 +41,34 @@ navLinks.querySelectorAll('a').forEach(link => {
 const sections = document.querySelectorAll('section[id]');
 const navItems = document.querySelectorAll('.nav-links a');
 
-const highlightNav = () => {
-  const scrollY = window.scrollY + 100;
-  sections.forEach(section => {
-    const top = section.offsetTop;
-    const height = section.offsetHeight;
-    const id = section.getAttribute('id');
-    if (scrollY >= top && scrollY < top + height) {
-      navItems.forEach(link => {
-        link.style.fontWeight = link.getAttribute('href') === `#${id}` ? '600' : '500';
-        link.style.color = link.getAttribute('href') === `#${id}` ? 'var(--deep-brown)' : '';
-      });
-    }
-  });
-};
+if (sections.length > 0 && navItems.length > 0) {
+  const highlightNav = () => {
+    const scrollY = window.scrollY + 100;
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+      if (scrollY >= top && scrollY < top + height) {
+        navItems.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === `#${id}` || href === `index.html#${id}`) {
+            link.classList.add('active');
+          } else if (href && href.startsWith('#')) {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  };
 
-window.addEventListener('scroll', highlightNav);
+  window.addEventListener('scroll', highlightNav);
+}
 
 /* =====================
    Fade-up animations
    ===================== */
 const animTargets = document.querySelectorAll(
-  '.section-label, .section-title, .highlight-card, .menu-category, .review-card, .info-card, .contact-card, .about-text, .about-highlights, .map-wrapper, .rating-summary, .price-card, .shift-header, .shift-intro, .faq-item'
+  '.section-label, .section-title, .highlight-card, .menu-category, .review-card, .info-card, .contact-card, .about-text, .about-highlights, .map-wrapper, .rating-summary, .price-card, .shift-header, .shift-intro, .faq-item, .content-card, .fssai-banner, .hygiene-card'
 );
 
 animTargets.forEach(el => el.classList.add('fade-up'));
