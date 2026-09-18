@@ -51,4 +51,36 @@
       <image:title>Spicy and savoury fresh namkeen snack jar at Bholanath Tea Stall, Kim</image:title>
     </image:image>
   </url>
+
+  <!-- About & FSSAI Standards -->
+  <url>
+    <loc>https://bholanathteastallshop.github.io/about.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://bholanathteastallshop.github.io/privacy-policy.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Disclaimer & Allergens -->
+  <url>
+    <loc>https://bholanathteastallshop.github.io/disclaimer.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Terms & Customer Rights -->
+  <url>
+    <loc>https://bholanathteastallshop.github.io/terms.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
 </urlset>
