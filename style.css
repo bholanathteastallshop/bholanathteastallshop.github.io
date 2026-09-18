@@ -529,6 +529,58 @@ img { max-width: 100%; display: block; }
   color: var(--deep-brown);
 }
 
+.google-review-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem 2.2rem;
+  box-shadow: var(--shadow);
+  border-top: 3px solid var(--light-brown);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  max-width: 680px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.google-review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.google-review-content {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1;
+  min-width: 260px;
+}
+
+.google-review-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--beige);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.google-review-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--deep-brown);
+  margin-bottom: 0.3rem;
+}
+
+.google-review-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
 /* ===========================
    Location
    =========================== */
@@ -1147,6 +1199,18 @@ a.contact-card:hover span {
 
   .rating-summary { flex-direction: column; text-align: center; }
 
+  .google-review-card {
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .google-review-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
   .footer-inner { flex-direction: column; gap: 1.5rem; }
 
   .reviews-grid { grid-template-columns: 1fr; }
@@ -1170,4 +1234,49 @@ a.contact-card:hover span {
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ===========================
+   Floating WhatsApp Button
+   =========================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 58px;
+  height: 58px;
+  background-color: #25D366;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45);
+  z-index: 999;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  background-color: #20ba59;
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6);
+  color: #ffffff;
+}
+
+.whatsapp-float:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 480px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+  }
+  .whatsapp-float svg {
+    width: 30px;
+    height: 30px;
+  }
 }
