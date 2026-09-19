@@ -9,36 +9,47 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/bholanath-cutting-chai-kim.webp</image:loc>
+      <image:title>Bholanath Cutting Chai</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/bholanath-special-chai-kim.webp</image:loc>
+      <image:title>Bholanath Special Chai</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/special-bread-pakoda-kim.webp</image:loc>
+      <image:title>Special Bread Pakoda</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/crispy-samosa-kim.webp</image:loc>
+      <image:title>Crispy Samosa</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/crispy-onion-bhajiya-kim.webp</image:loc>
+      <image:title>Crispy Onion Bhajiya</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/south-indian-medu-vada-kim.webp</image:loc>
+      <image:title>South Indian Medu Vada</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/hot-batata-vada-kim.webp</image:loc>
+      <image:title>Hot Batata Vada</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/balaji-wafers-snacks-kim.webp</image:loc>
+      <image:title>Balaji Wafers &amp; Snacks</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/real-namkeen-wafers-kim.webp</image:loc>
+      <image:title>Real Namkeen Wafers</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/chai-biscuits-parle-kim.webp</image:loc>
+      <image:title>Chai Biscuits &amp; Parle-G</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/fresh-namkeen-snacks-kim.webp</image:loc>
+      <image:title>Fresh Namkeen Snacks</image:title>
     </image:image>
   </url>
 
