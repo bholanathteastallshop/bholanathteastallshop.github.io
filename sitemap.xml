@@ -1,61 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage & Core Offerings -->
   <url>
     <loc>https://bholanathteastallshop.github.io/</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/bholanath-cutting-chai-kim.webp</image:loc>
-      <image:title>Cutting chai at Bholanath Tea Stall, Kim</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/bholanath-special-chai-kim.webp</image:loc>
-      <image:title>Freshly brewed full cup tea at Bholanath Tea Stall, Kim</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/special-bread-pakoda-kim.webp</image:loc>
-      <image:title>Freshly made crispy bread pakoda at Bholanath Tea Stall, Kim</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/crispy-samosa-kim.webp</image:loc>
-      <image:title>Golden crispy potato samosa at Bholanath Tea Stall, Kim</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/crispy-onion-bhajiya-kim.webp</image:loc>
-      <image:title>Golden crispy onion bhajiya evening snack at Bholanath Tea Stall, Kim</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/south-indian-medu-vada-kim.webp</image:loc>
-      <image:title>Crispy South-Indian style medu vada at Bholanath Tea Stall, Kim</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/hot-batata-vada-kim.webp</image:loc>
-      <image:title>Hot spiced batata vada breakfast snack at Bholanath Tea Stall, Kim</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/balaji-wafers-snacks-kim.webp</image:loc>
-      <image:title>Balaji wafers and chips packet at Bholanath Tea Stall, Kim</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/real-namkeen-wafers-kim.webp</image:loc>
-      <image:title>Real wafers and chips snacks at Bholanath Tea Stall, Kim</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/chai-biscuits-parle-kim.webp</image:loc>
-      <image:title>Crispy biscuits to enjoy with hot chai at Bholanath Tea Stall, Kim</image:title>
     </image:image>
     <image:image>
       <image:loc>https://bholanathteastallshop.github.io/img/fresh-namkeen-snacks-kim.webp</image:loc>
-      <image:title>Spicy and savoury fresh namkeen snack jar at Bholanath Tea Stall, Kim</image:title>
     </image:image>
   </url>
 
-  <!-- About & FSSAI Standards -->
+  <!-- About & FSSAI Hygiene Standards -->
   <url>
     <loc>https://bholanathteastallshop.github.io/about.html</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -63,23 +54,23 @@
   <!-- Privacy Policy -->
   <url>
     <loc>https://bholanathteastallshop.github.io/privacy-policy.html</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
 
-  <!-- Disclaimer & Allergens -->
+  <!-- Disclaimer & Allergen Advisory -->
   <url>
     <loc>https://bholanathteastallshop.github.io/disclaimer.html</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
 
-  <!-- Terms & Customer Rights -->
+  <!-- Terms & Conditions -->
   <url>
     <loc>https://bholanathteastallshop.github.io/terms.html</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
